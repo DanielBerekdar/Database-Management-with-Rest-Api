@@ -1,0 +1,54 @@
+
+<?php
+/*
+Welcome <?php echo $_POST["firstname"]; ?><br>
+Your last name is: <?php echo $_POST["lastname"]; ?><br>
+Your gender is: <?php echo $_POST["gender"]; ?><br>
+*/
+
+
+require_once('mysql_conn.php');
+
+if (mysqli_connect_errno()) {    
+	printf("Connect failed: %s\n", mysqli_connect_error());    
+	exit();
+}
+
+/*
+$firstname = $_REQUEST['firstname'];
+$lastname = $_REQUEST['lastname'];
+$gender
+*/
+
+$firstname = $_POST["firstname"];
+$lastname = $_POST["lastname"];
+$gender = $_POST["gender"];
+
+/*
+$firstname = 'Tom';
+$lastname = 'TomTom';
+$gender = 'M';
+*/
+echo $firstname;
+echo $lastname;
+echo $gender;
+
+$query = "INSERT INTO students
+(first_name, last_name, email, street, city, 
+state, zip, phone, birth_date, sex, date_entered, 
+lunch_cost) 
+VALUES('".$firstname."','".$lastname."',
+'kbrown@gmail.com','123 Houston Street',
+'New York', 'NY','111445','(555) 112-5670',
+'1980-04-01','".$gender."', CURDATE(),'372.23')";
+
+echo $query;
+
+
+/*
+$query = "INSERT INTO students(first_name, last_name, email, street, city, state, zip, phone, birth_date, sex, date_entered, lunch_cost) VALUES ('Mary','Potter','kbrown@gmail.com','123 Houston Street','New Y
+mysqli_query($dbc,$query);
+mysqli_close($dbc);
+echo "Done!";
+?>
+

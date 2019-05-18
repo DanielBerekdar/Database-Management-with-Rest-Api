@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Students from JSON</title>
+	<link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="topnav">
+  <a class="active" href="http://localhost/ws/welcome.html">Home</a>
+  <a href="http://localhost/ws/new_record.php">Add Record</a>
+	<a href="http://localhost/ws/modifyrecord.php">Modify Record</a>
+  <a href="http://localhost/ws/removeRecord.php">Remove Record</a>
+  <a href="http://localhost/ws/view.php">View Records</a>
+  <a href="http://localhost/ws/index.html">StudentDB</a>
+</div> 
+
+<header>
+
+</header>
+
+<section>
+
+</section>
+
+<script>
+var header = document.querySelector('header');
+var section = document.querySelector('section');
+var requestURL = 'http://localhost/ws/json_code.php';
+var request = new XMLHttpRequest();
+
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+
+request.onload = function() {
+	var myStudents = request.response;
+	showStudents(myStudents);
+}
+
+function showStudents(jsonObj) {
+	var list = jsonObj['students'];
+
+	for(var i = 0; i < list.length; i++) {
+
+	var myArticle = document.createElement('article');
+	
+	var myH1 = document.createElement('h1');
+	var myH2 = document.createElement('h1');
+
+	var myPara1 = document.createElement('p');
+	var myPara2 = document.createElement('p');
+	var myPara3 = document.createElement('p');
+	var myPara4 = document.createElement('p');
+	var myPara5 = document.createElement('p');
+
+	var myPara6 = document.createElement('p');
+	var myPara7 = document.createElement('p');
+	var myPara8 = document.createElement('p');
+	var myPara9 = document.createElement('p');
+	var myPara10 = document.createElement('p');
+	var myPara11 = document.createElement('p');
+	var myPara12 = document.createElement('p');
+
+	var myList = document.createElement('ul');
+	
+	myH1.textContent = list[i].first_name;
+	myH2.textContent = list[i].last_name;
+	myPara2.textContent = 'E-mail: ' + list[i].email;
+	myPara3.textContent = 'Street: ' + list[i].street;
+	myPara4.textContent = 'City: ' + list[i].city;
+	myPara5.textContent = 'State: ' + list[i].state;
+	myPara6.textContent = 'Zip: ' + list[i].zip;
+
+	myPara7.textContent = 'Phone: ' + list[i].phone;
+	myPara8.textContent = 'Birth Date: ' + list[i].birth_date;
+	myPara9.textContent = 'Sex: ' + list[i].sex;
+	myPara10.textContent = 'Date Entered: ' + list[i].date_entered;
+	myPara11.textContent = 'Lunch Cost: ' + list[i].lunch_cost;
+
+	myArticle.appendChild(myH1);
+	myArticle.appendChild(myH2);
+	myArticle.appendChild(myPara2);
+	myArticle.appendChild(myPara3);
+	myArticle.appendChild(myPara4);
+	myArticle.appendChild(myPara5);
+	myArticle.appendChild(myPara6);
+
+	myArticle.appendChild(myPara7);
+	myArticle.appendChild(myPara8);
+	myArticle.appendChild(myPara9);
+	myArticle.appendChild(myPara10);
+	myArticle.appendChild(myPara11);
+
+	section.appendChild(myArticle);
+	}
+}
+</script>
+
+
+</body>
+</html>
+
